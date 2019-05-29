@@ -1,0 +1,128 @@
+<div *ngIf="info.token; else loggedOut">
+  <div class="div">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <h2> ข้อมูลรถ</h2>
+      </mat-card-header>
+      <mat-card-content>
+
+
+        <form #regisForm="ngForm" (ngSubmit)="save()">
+          <div class="divvv">
+
+            <mat-form-field class="input" appearance="outline">
+              <mat-select placeholder="ประเภทรถ" name="typeCar" [(ngModel)]="car.typeCar" required>
+                <mat-option *ngFor="let typeCar of typeCars" [value]="typeCar.typeCar">
+                  {{typeCar.typeCar}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="outline">
+              <mat-label>ยี่ห้อ</mat-label>
+              <input matInput placeholder="ยี่ห้อ" name="brand" [(ngModel)]="car.brand" required>
+            </mat-form-field>
+          </div>
+          <div class="divvv">
+            <mat-form-field class="input" appearance="outline">
+              <mat-label> รุ่น</mat-label>
+              <input matInput placeholder=" รุ่น" [(ngModel)]="car.generation" name="generation" required>
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="outline">
+              <mat-label>โฉมรถยนต์</mat-label>
+              <input matInput placeholder="โฉมรถยนต์" name="carMakeover" [(ngModel)]="car.carMakeover" required>
+            </mat-form-field>
+          </div>
+
+          <div class="divvv">
+            <mat-form-field class="input" appearance="outline">
+              <mat-label>รายละเอียดรุ่น</mat-label>
+              <input matInput placeholder="รายละเอียดรุ่น" [(ngModel)]="car.modelDetails" name="modelDetails" required>
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="outline">
+              <mat-label>ปี</mat-label>
+              <input matInput  placeholder="ปี" type="number"  name="year" [(ngModel)]="car.year" required>
+            </mat-form-field>
+          </div>
+
+          <div class="divvv">
+            <mat-form-field class="input" appearance="outline">
+              <mat-label>ขนาดเครื่องยนต์</mat-label>
+              <div class="divvv">
+                <input matInput placeholder="ขนาดเครื่องยนต์" type="number"  [(ngModel)]="car.engineSize" name="engineSize" required>
+                cc.
+              </div>
+            </mat-form-field>
+
+
+            <mat-form-field class="input" appearance="outline">
+                <mat-select placeholder="ระบบเกียร์" name="gearSystem" [(ngModel)]="car.gearSystem" required>
+                  <mat-option *ngFor="let gearSystem of gearSystems" [value]="gearSystem.gearSystem">
+                    {{gearSystem.gearSystem}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+          </div>
+
+          <div class="divvv">
+            <mat-form-field class="input" appearance="outline">
+              <mat-label>จำนวนที่นั่ง</mat-label>
+              <div class="divvv">
+                <input matInput type="number" placeholder="จำนวนที่นั่ง" name="numberSeats" [(ngModel)]="car.numberSeats" required>
+                ที่
+              </div>
+            </mat-form-field>
+
+
+            <mat-form-field class="input" appearance="outline">
+              <mat-label>เลขไมล์ (กม.)</mat-label>
+              <div class="divvv">
+                <input matInput type="number"  placeholder="เลขไมล์ (กม.)" name="mileage" [(ngModel)]="car.mileage" required>
+                กม.
+              </div>
+            </mat-form-field>
+          </div>
+
+          <div class="divvv">
+            <mat-form-field class="input" appearance="outline">
+              <mat-label>สี</mat-label>
+              <input matInput placeholder="สี" name="color" [(ngModel)]="car.color" required>
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="outline">
+              <mat-label>ราคา</mat-label>
+              <div class="divvv">
+                <input matInput placeholder="ราคา" type="number"  name="price" [(ngModel)]="car.price" required>
+                บาท
+              </div>
+            </mat-form-field>
+          </div>
+          <mat-form-field class="input" appearance="outline">
+              <mat-label>รูป</mat-label>
+              <!-- <div class="divvv"> -->
+                <input matInput placeholder="รูป"  name="image" [(ngModel)]="car.image" required>
+                <!-- บาท
+              </div> -->
+            </mat-form-field>
+
+          <mat-card-actions>
+          </mat-card-actions>
+          <button class="button1" mat-flat-button color="warn" id="reg" color="primary">บันทึก</button>
+
+        </form>
+
+
+      </mat-card-content>
+      <mat-card-actions>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+
+<ng-template #loggedOut>
+  <app-home></app-home>
+</ng-template>

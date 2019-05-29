@@ -1,0 +1,26 @@
+.example-card {
+    max-width: 700px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+}
+
+/* .mat-sort-header-container {
+    align-items: center;
+} */
+
+.tr{
+    margin: auto;
+    text-align: center;
+}
+.button{
+    font-size: 14px;
+    margin-left: 15px;
+    /* color: #000000; */
+    /* margin-right: auto; */
+    margin-left: auto;
+    height:  30px;
+}

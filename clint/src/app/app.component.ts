@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TokenStorageService } from './shared/auth/token-storage.service';
-import { Router } from '@angular/router';
+
 
 
 
@@ -35,5 +35,6 @@ export class AppComponent {
   logout() {
     this.tokenStorage.signOut();
     window.location.reload();
+
   }
 }

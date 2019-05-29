@@ -29,10 +29,19 @@
     /* margin-right: auto; */
     margin-left: auto;
 }
-.button2{
+
+.button2 {
     font-size: 15px;
     margin-left: 8px;
     color: #000000;
     /* margin-right: auto; */
-    /* margin-left: auto; */
+    /* margin: auto; */
+}
+
+.button3 {
+    font-size: 15px;
+    margin-left: 8px;
+    color: #000000;
+    /* margin-right: auto; */
+    margin-left: auto;
 }
