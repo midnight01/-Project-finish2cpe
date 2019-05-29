@@ -21,4 +21,8 @@ export class CarloanService {
   getCarloanId(carloanId: any): Observable<any> {
     return this.http.get(this.API + '/Carloan/' + carloanId);
   }
+
+  getCustomer(): Observable<any> {
+    return this.http.get(this.API + '/Customer');
+  }
 }

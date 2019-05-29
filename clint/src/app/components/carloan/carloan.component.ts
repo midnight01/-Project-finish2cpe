@@ -75,10 +75,10 @@ export class CarloanComponent implements OnInit {
       // console.log(this.carloanId);
     });
 
-    if (this.gearSystem = "AT") {
+    if (this.gearSystem == "AT" || this.gearSystem == "เกียร์อัตโนมัติ" ) {
       this.gear = "Auto";
 
-    } else if (this.gearSystem = "MT") {
+    } else if (this.gearSystem == "MT" || this.gearSystem == "เกียร์ธรรมดา") {
       this.gear = "Manual";
     }
   }

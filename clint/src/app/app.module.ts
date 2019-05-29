@@ -32,15 +32,18 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { LoginComponent } from './components/login/login.component';
+import { NewCarComponent } from './components/new-car/new-car.component';
+import { CustomerListComponent } from './components/customer-list/customer-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CcComponent,
     CarloanComponent,
-    LoginComponent
-
-
+    LoginComponent,
+    NewCarComponent,
+    CustomerListComponent
   ],
 
   imports: [
