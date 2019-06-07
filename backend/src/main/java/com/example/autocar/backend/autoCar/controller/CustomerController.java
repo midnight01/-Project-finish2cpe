@@ -6,6 +6,7 @@ import com.example.autocar.backend.autoCar.message.ResponseMessage;
 import com.example.autocar.backend.autoCar.repository.CarloanRepository;
 import com.example.autocar.backend.autoCar.repository.CustomerRepository;
 import com.example.autocar.backend.autoCar.service.CustomerService;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -44,17 +46,23 @@ public class CustomerController {
         Customer customer = new Customer();
 
         String idcard = newCustomer.getIdCardNumber();
+        String phone = newCustomer.getPhoneNumber();
         String idcard1;
         idcard1 = (idcard.charAt(0) +"-"+ idcard.charAt(1) +
                      idcard.charAt(2) + idcard.charAt(3) + idcard.charAt(4) + "-"+
                      idcard.charAt(5) + idcard.charAt(6) + idcard.charAt(7) +
                      idcard.charAt(8) + idcard.charAt(9) +"-"+idcard.charAt(10)+
                      idcard.charAt(11)+"-" + idcard.charAt(12));
-        String phone = newCustomer.getPhoneNumber();
+
+
+
         String phone1;
-        phone1 = (phone.charAt(0) + phone.charAt(1)+"-" + phone.charAt(2)
-                +phone.charAt(3) + phone.charAt(4) + phone.charAt(5)+"-" + phone.charAt(6)
-                +phone.charAt(7) + phone.charAt(8) + phone.charAt(9));
+        phone1 = (phone.charAt(0)+"" + phone.charAt(1) +"-" + phone.charAt(2)+
+                  phone.charAt(3) + phone.charAt(4) + phone.charAt(5)+"-" + phone.charAt(6)+
+                  phone.charAt(7) + phone.charAt(8) + phone.charAt(9));
+
+
+//        var Date = new Date("2015-03-25");
 
         customer.setFirstName(newCustomer.getFirstName());
         customer.setLastName(newCustomer.getLastName());
@@ -65,7 +73,21 @@ public class CustomerController {
         customer.setJobStatu(newCustomer.getJobStatu());
         customer.setWorkExperience(newCustomer.getWorkExperience());
         customer.setSalaryBase(newCustomer.getSalaryBase());
+        customer.setDate(new Date());
 
+        System.out.println(phone);
+        System.out.println();
+        System.out.println(phone1);
+        System.out.println(phone.charAt(0));
+        System.out.println(newCustomer.getPhoneNumber());
+        System.out.println();
+
+        System.out.println();
+        System.out.println();
+        System.out.println(idcard1);
+        System.out.println();
+        System.out.println(newCustomer.getIdCardNumber());
+        System.out.println();
         customerRepository.save(customer);
         return new ResponseEntity<>(new ResponseMessage("Save Data successfully!"), HttpStatus.OK);
     }

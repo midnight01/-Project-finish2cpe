@@ -1,0 +1,204 @@
+<div *ngIf="info.token; else loggedOut">
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step>
+      <!-- <form [formGroup]="firstFormGroup"> -->
+      <ng-template matStepLabel>ข้อมูลรถ</ng-template>
+
+      <mat-card class="example-card">
+        <mat-card-header>
+          <h2> ข้อมูลรถ</h2>
+        </mat-card-header>
+        <mat-card-content>
+
+          <form #regisForm="ngForm" (ngSubmit)="next()">
+            <div class="divvv">
+
+              <mat-form-field class="input" appearance="outline">
+                <mat-select placeholder="ประเภทรถ" name="typeCar" [(ngModel)]="car.typeCar" required>
+                  <mat-option *ngFor="let typeCar of typeCars" [value]="typeCar.typeCar">
+                    {{typeCar.typeCar}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="input" appearance="outline">
+                <mat-label>ยี่ห้อ</mat-label>
+                <input matInput placeholder="ยี่ห้อ" name="brand" [(ngModel)]="car.brand" required>
+              </mat-form-field>
+            </div>
+            <div class="divvv">
+              <mat-form-field class="input" appearance="outline">
+                <mat-label> รุ่น</mat-label>
+                <input matInput placeholder=" รุ่น" [(ngModel)]="car.generation" name="generation" required>
+              </mat-form-field>
+
+              <mat-form-field class="input" appearance="outline">
+                <mat-label>โฉมรถยนต์</mat-label>
+                <input matInput placeholder="โฉมรถยนต์" name="carMakeover" [(ngModel)]="car.carMakeover" required>
+              </mat-form-field>
+            </div>
+
+            <div class="divvv">
+              <mat-form-field class="input" appearance="outline">
+                <mat-label>รายละเอียดรุ่น</mat-label>
+                <input matInput placeholder="รายละเอียดรุ่น" [(ngModel)]="car.modelDetails" name="modelDetails"
+                  required>
+              </mat-form-field>
+
+              <mat-form-field class="input" appearance="outline">
+                <mat-label>ปี</mat-label>
+                <input matInput placeholder="ปี" type="number" name="year" [(ngModel)]="car.year" required>
+              </mat-form-field>
+            </div>
+
+            <div class="divvv">
+              <mat-form-field class="input" appearance="outline">
+                <mat-label>ขนาดเครื่องยนต์</mat-label>
+                <div class="divvv">
+                  <input matInput placeholder="ขนาดเครื่องยนต์" type="number" [(ngModel)]="car.engineSize"
+                    name="engineSize" required>
+                  cc.
+                </div>
+              </mat-form-field>
+
+
+              <mat-form-field class="input" appearance="outline">
+                <mat-select placeholder="ระบบเกียร์" name="gearSystem" [(ngModel)]="car.gearSystem" required>
+                  <mat-option *ngFor="let gearSystem of gearSystems" [value]="gearSystem.gearSystem">
+                    {{gearSystem.gearSystem}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            </div>
+
+            <div class="divvv">
+              <mat-form-field class="input" appearance="outline">
+                <mat-label>จำนวนที่นั่ง</mat-label>
+                <div class="divvv">
+                  <input matInput type="number" placeholder="จำนวนที่นั่ง" name="numberSeats"
+                    [(ngModel)]="car.numberSeats" required>
+                  ที่
+                </div>
+              </mat-form-field>
+
+
+              <mat-form-field class="input" appearance="outline">
+                <mat-label>เลขไมล์ (กม.)</mat-label>
+                <div class="divvv">
+                  <input matInput type="number" placeholder="เลขไมล์ (กม.)" name="mileage" [(ngModel)]="car.mileage"
+                    required>
+                  กม.
+                </div>
+              </mat-form-field>
+            </div>
+            <div class="divvv">
+              <mat-form-field class="input" appearance="outline">
+                <mat-label>สี</mat-label>
+                <input matInput placeholder="สี" name="color" [(ngModel)]="car.color" required>
+              </mat-form-field>
+
+              <mat-form-field class="input" appearance="outline">
+                <mat-label>ราคา</mat-label>
+                <div class="divvv">
+                  <input matInput placeholder="ราคา" type="number" name="price" [(ngModel)]="car.price" required>
+                  บาท
+                </div>
+              </mat-form-field>
+            </div>
+            <mat-card-actions>
+            </mat-card-actions>
+            <button class="button1" mat-flat-button color="warn" id="reg"
+              [disabled]="regisForm.invalid || checkSelected == false" matStepperNext color="primary">Next</button>
+
+          </form>
+
+
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+      </mat-card>
+
+      <!-- </form> -->
+    </mat-step>
+    <mat-step>
+      <!-- <form [formGroup]="secondFormGroup"> -->
+      <ng-template matStepLabel>อัพโหลดรูป ภาพ</ng-template>
+      <mat-card class="example-card2">
+        <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
+          <input hidden type="file" multiple #fileInput (change)="uploadFile($event.target.files)">
+        </div>
+        <div class="divvv">
+          <button class="button2" mat-raised-button color="accent" matStepperPrevious>Back</button>
+          <button class="button2" mat-flat-button matStepperNext>Next</button>
+        </div>
+        <div class="files-list" *ngFor="let file of files;let i=index">
+          <div>
+            <p>{{ file }}</p>
+            <div>{{ uploadPercent | async }}</div>
+            <!-- <a [href]="downloadURL | async">{{ downloadURL | async }}</a> -->
+          </div>
+          <button class="delete-file" (click)="deleteAttachment(i)">
+            <img src="../../../assets/image/Recycle_Bin_Full.png">
+          </button>
+        </div>
+      </mat-card>
+      <!-- </form> -->
+
+
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>ข้อมูลทั้งหมด</ng-template>
+
+
+      <mat-card class="example-card2">
+        <h3>ข้อมูลทั้งหมด</h3>
+        <mat-card-content>
+
+          <form #myForm="ngForm" (submit)="save()" novalidate>
+            <h4> ประเภทรถ : {{car.typeCar}} </h4>
+            <h4> ยี่ห้อ : {{car.brand}} </h4>
+            <h4> รุ่น : {{car.generation}} </h4>
+            <h4> โฉมรถยนต์ : {{car.carMakeover}} </h4>
+            <h4> รายละเอียดรุ่น : {{car.modelDetails}} </h4>
+            <h4> ปี : {{car.year}} </h4>
+            <h4> ขนาดเครื่องยนต์ : {{car.engineSize}} cc.</h4>
+            <h4> ระบบเกียร์ : {{car.gearSystem}} </h4>
+            <h4> จำนวนที่นั่ง : {{car.numberSeats}} ที่</h4>
+            <h4> เลขไมล์ (กม.) : {{car.mileage | number}} กม.</h4>
+            <h4> สี : {{car.color}} </h4>
+            <h4> ราคา : {{car.price | number}} บาท</h4>
+            <div>
+              <h3> เลือกรูปภาพหลัก </h3>
+              <mat-radio-group aria-label="Select an option">
+                <div>
+                  <input type="radio" value="{{downloadURL0 | async}}" name="image" [(ngModel)]="car.image">รูปที่ 1
+                  <img class="cc77" [src]="downloadURL0 | async" />
+                  <input type="radio" value="{{downloadURL1 | async}}" name="image" [(ngModel)]="car.image">รูปที่ 2
+                  <img class="cc77" [src]="downloadURL1 | async" />
+                </div>
+                <div>
+                  <input type="radio" value="{{downloadURL2 | async}}" name="image" [(ngModel)]="car.image">รูปที่ 3
+                  <img class="cc77" [src]="downloadURL2 | async" />
+                  <input type="radio" value="{{downloadURL3 | async}}" name="image" [(ngModel)]="car.image">รูปที่ 4
+                  <img class="cc77" [src]="downloadURL3 | async" />
+                </div>
+              </mat-radio-group>
+            </div>
+
+            <div class="divvv">
+              <button class="button2" mat-flat-button color="accent" matStepperPrevious>Back</button>
+              <button class="button2" type="submit" mat-flat-button color="warn" id="reg">Save</button>
+            </div>
+          </form>
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+      </mat-card>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
+
+<ng-template #loggedOut>
+  <app-home></app-home>
+</ng-template>

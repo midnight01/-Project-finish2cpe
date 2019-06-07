@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CarService } from 'src/app/shared/car/car.service';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/shared/auth/token-storage.service';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -13,7 +15,10 @@ export class HomeComponent implements OnInit {
   showFiller = false;
   Specifications: any;
   info: any;
-  constructor(private token: TokenStorageService,private service: CarService, private router: Router) { }
+  profileUrl0: Observable<string | null>;
+  constructor(private token: TokenStorageService,private storage: AngularFireStorage,private service: CarService, private router: Router) { 
+
+  }
 
 
   ngOnInit() {
@@ -21,6 +26,9 @@ export class HomeComponent implements OnInit {
       this.Specifications = data;
       // console.log(this.Specifications);
     });
+
+
+
     this.info = {
       token: this.token.getToken(),
       username: this.token.getUsername(),

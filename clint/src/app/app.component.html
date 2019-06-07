@@ -9,7 +9,7 @@
                 <button class="button2" routerLink="customer-list" mat-button>ข้อมูลลูกค้า</button>
             </div>
             <div *ngIf="authority === 'admin'">
-                <button class="button2" routerLink="new-car" mat-button>เพิ่มรถ</button>
+                <button class="button2" routerLink="new-car2" mat-button>เพิ่มรถ</button>
             </div>
             <div class="button1">
                 <button *ngIf="!authority" routerLink='login' mat-button>เข้าสู่ระบบ</button>
@@ -21,3 +21,5 @@
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+<!-- <app-new-car2></app-new-car2> -->

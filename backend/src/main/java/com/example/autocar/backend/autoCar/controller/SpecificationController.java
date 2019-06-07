@@ -7,6 +7,7 @@ import com.example.autocar.backend.autoCar.service.SpecificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -34,7 +35,8 @@ public class SpecificationController {
     }
 
     @PostMapping(path = "/Specification/save")
-    public ResponseEntity<?> newSpecification(@RequestBody Specification newSpecification){
+//    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> newSpecification(@Valid @RequestBody Specification newSpecification){
 
         Specification s = new Specification();
         s.setTypeCar(newSpecification.getTypeCar());
