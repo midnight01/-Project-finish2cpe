@@ -6,6 +6,7 @@ import { Carloan } from 'src/app/shared/models/model-class';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 
 export interface Installment {
@@ -24,7 +25,10 @@ export class CcComponent implements OnInit {
   brand: any;
   generation: any;
   items: Observable<any[]>;
-
+  // profileUrl0s: Observable<string | null>;
+  // profileUrl1s: Observable<string | null>;
+  // profileUrl2s: Observable<string | null>;
+  // profileUrl3s: Observable<string | null>;
 
   carloan: Carloan = new Carloan();
   numberInstallments: Installment[] = [
@@ -36,7 +40,7 @@ export class CcComponent implements OnInit {
     { Number: '72 งวด 6 ปี' }
   ];
 
-  constructor(db: AngularFireDatabase, private httpClient: HttpClient, private service: CarService, private router: Router, private route: ActivatedRoute) {
+  constructor(db: AngularFireDatabase, private httpClient: HttpClient, private service: CarService, private router: Router, private route: ActivatedRoute,private storage:AngularFireStorage) {
     this.route.params.subscribe(params => {
       this.specificationId = params['id'];
     });

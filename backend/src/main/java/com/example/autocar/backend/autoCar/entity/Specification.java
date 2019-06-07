@@ -1,9 +1,12 @@
 package com.example.autocar.backend.autoCar.entity;
 
 
+import com.sun.jndi.toolkit.url.Uri;
 import lombok.NonNull;
 
 import javax.persistence.*;
+import java.net.URL;
+import java.sql.Blob;
 
 @Entity
 public class Specification {
@@ -38,6 +41,7 @@ public class Specification {
     private int price;
 
     private  String image;
+//    private Blob image;
 
     public Specification(){}
 
@@ -145,6 +149,15 @@ public class Specification {
     public void setPrice(int price) {
         this.price = price;
     }
+
+//    public String getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(String image) {
+//        this.image = image;
+//    }
+
 
     public String getImage() {
         return image;

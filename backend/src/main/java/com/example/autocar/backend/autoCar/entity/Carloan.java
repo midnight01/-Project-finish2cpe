@@ -12,7 +12,10 @@ public class Carloan {
     @GeneratedValue(generator = "carloan_seq", strategy = GenerationType.SEQUENCE)
     private Long carloanId;
 
+
+    @NumberFormat
     private String numberInstallment;
+    @NumberFormat
     private String interest;
     @NumberFormat
     private float deposit;

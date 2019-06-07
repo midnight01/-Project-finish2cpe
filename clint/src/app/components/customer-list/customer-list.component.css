@@ -1,20 +1,21 @@
 .example-card {
-    max-width: 700px;
+    max-width: 1024px;
     margin: auto;
     margin-top: 30px;
 }
 
 table {
     width: 100%;
+    /* border: 1px solid black; */
 }
 
-/* .mat-sort-header-container {
-    align-items: center;
-} */
-
+table, td, th {
+    border: 1px solid rgb(12, 105, 245);
+}
 .tr{
     margin: auto;
     text-align: center;
+    /* border: 1px solid black; */
 }
 .button{
     font-size: 14px;

@@ -11,6 +11,7 @@ import {
   MatToolbarModule,
   MatSidenavModule,
   MatIconModule,
+  MatStepperModule,
   MatTableModule,
   MatSelectModule,
   MatGridListModule,
@@ -34,6 +35,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { LoginComponent } from './components/login/login.component';
 import { NewCarComponent } from './components/new-car/new-car.component';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
+import { NewCar2Component } from './components/new-car2/new-car2.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { CustomerListComponent } from './components/customer-list/customer-list.
     CarloanComponent,
     LoginComponent,
     NewCarComponent,
-    CustomerListComponent
+    CustomerListComponent,
+    NewCar2Component
   ],
 
   imports: [
@@ -66,6 +69,7 @@ import { CustomerListComponent } from './components/customer-list/customer-list.
     MatListModule,
     MatRadioModule,
     MatTableModule,
+    MatStepperModule,
     MatSidenavModule,
     MatIconModule,
     MatGridListModule,

@@ -3,18 +3,23 @@
     <mat-card class="example-card">
       <mat-card-header>
         <h2> ข้อมูลลูกค้า ทั้งหมด</h2>
-        <button class="button" mat-raised-button color="primary">export</button>
+        <!-- <button class="button" href="http://localhost:8080/data/download/customers.xlsx" mat-raised-button color="primary">export</button> -->
+        <a class="button" href="http://localhost:8080/data/download/customers.xlsx">download</a>
       </mat-card-header>
       <mat-card-content>
 
 
         <table matSort (matSortChange)="sortData($event)">
           <tr>
-            <th mat-sort-header="name">No.</th>
-            <th mat-sort-header="calories">Name</th>
-            <th mat-sort-header="fat">phoneNumber</th>
-            <th mat-sort-header="carbs">idCardNumber</th>
-            <!-- <th mat-sort-header="protein">Protein (g)</th> -->
+            <th mat-sort-header="name">ไอดี</th>
+            <th mat-sort-header="calories">ชื่อ-นามสกุล</th>
+            <th mat-sort-header="fat">เบอร์โทร</th>
+            <th mat-sort-header="carbs">เลขบัตรประชาชน</th>
+            <th mat-sort-header="protein">วันที่ขอสินเชื่อ</th>
+            <th mat-sort-header="fat">ชื่อ-รถ</th>
+            <th mat-sort-header="carbs">ราคารถ</th>
+            <th mat-sort-header="protein">ยอดจัดไฟแนนซ์</th>
+            <th mat-sort-header="protein">ค่างวดต่อเดือน</th>
           </tr>
 
           <tr class="tr" *ngFor="let Customer of Customers">
@@ -22,13 +27,19 @@
             <td>{{Customer.firstName}} {{Customer.lastName}}</td>
             <td>{{Customer.phoneNumber}}</td>
             <td>{{Customer.idCardNumber}}</td>
-            <!-- <td>{{Customer.protein}}</td> -->
+            <td>{{Customer.date}}</td>
+
+            <td>
+              {{Customer.carloan.specification.brand}}
+              {{Customer.carloan.specification.generation}}
+              ({{Customer.carloan.specification.carMakeover}})
+              {{Customer.carloan.specification.modelDetails}}
+            </td>
+            <td>{{Customer.carloan.specification.price | number}} บาท</td>
+            <td>{{Customer.carloan.financing | number}} บาท</td>
+            <td>{{Customer.carloan.payment | number}} บาท</td>
           </tr>
         </table>
-
-
-
-
       </mat-card-content>
       <mat-card-actions>
       </mat-card-actions>
