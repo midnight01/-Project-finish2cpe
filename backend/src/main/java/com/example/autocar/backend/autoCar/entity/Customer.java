@@ -1,10 +1,7 @@
 package com.example.autocar.backend.autoCar.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import java.util.Date;
 
 @Entity
 public class Customer {
@@ -23,8 +20,8 @@ public class Customer {
     private  String workExperience;
     private  String salaryBase;
     private  String jobStatu;
-    @JsonFormat(pattern="yyyy-MM-dd")
-    private Date date;
+    private String date;
+    private String dateEnd;
 
     @ManyToOne
     private  Carloan carloan;
@@ -110,11 +107,19 @@ public class Customer {
         this.carloan = carloan;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getDateEnd() {
+        return dateEnd;
+    }
+
+    public void setDateEnd(String dateEnd) {
+        this.dateEnd = dateEnd;
     }
 }
