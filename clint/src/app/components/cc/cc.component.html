@@ -99,7 +99,8 @@
                                           </mat-card-actions>
                                           <button class="button1" mat-raised-button
                                                 (click)="goCustomer(Specification?.gearSystem)"
-                                                color="primary">สนใจขอสินเชื่อ</button>
+                                                color="primary" [disabled]="regisForm.invalid || checkSelected == false" >สนใจขอสินเชื่อ</button>
+                                                
                                     </form>
                               </div>
 
