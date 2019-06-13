@@ -5,8 +5,8 @@ import { Subscription } from 'rxjs';
 import { customer } from 'src/app/shared/models/model-class';
 import { HttpClient } from '@angular/common/http';
 import { CarloanService } from 'src/app/shared/carloan/carloan.service';
-
-
+import { formatDate } from '@angular/common';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 
 export interface workExperiences {
@@ -27,6 +27,10 @@ export interface salaryBases {
   styleUrls: ['./carloan.component.css']
 })
 export class CarloanComponent implements OnInit {
+
+  today = new Date();
+  jstoday = '';
+
   specificationId: any;
   Specification: any;
   sub: Subscription;
@@ -35,7 +39,7 @@ export class CarloanComponent implements OnInit {
   financing: any;
   gearSystem: any;
   gear: string;
-  carloan:any;
+  carloan: any;
   customer: customer = new customer;
 
   jobStatus: jobStatus[] = [
@@ -59,8 +63,8 @@ export class CarloanComponent implements OnInit {
     { Bases: '100,000 ขึ้นไป' }
   ];
 
-  carloanId:any;
-  constructor(private httpClient: HttpClient, private service: CarService, private router: Router, private route: ActivatedRoute, private service2: CarloanService) {
+  carloanId: any;
+  constructor(public db: AngularFireDatabase, private httpClient: HttpClient, private service: CarService, private router: Router, private route: ActivatedRoute, private service2: CarloanService) {
     this.route.params.subscribe(params => {
       this.ber = params['id1'];
     });
@@ -75,12 +79,14 @@ export class CarloanComponent implements OnInit {
       // console.log(this.carloanId);
     });
 
-    if (this.gearSystem == "AT" || this.gearSystem == "เกียร์อัตโนมัติ" ) {
+    if (this.gearSystem == "AT" || this.gearSystem == "เกียร์อัตโนมัติ") {
       this.gear = "Auto";
 
     } else if (this.gearSystem == "MT" || this.gearSystem == "เกียร์ธรรมดา") {
       this.gear = "Manual";
     }
+    this.jstoday = formatDate(this.today, 'yyyy-MM-dd', 'en-TH', '+0530');
+    // console.log(this.jstoday);
   }
 
   ngOnInit() {
@@ -95,8 +101,10 @@ export class CarloanComponent implements OnInit {
   idcardnumber: any;
   nn: String;
   save() {
+    // this.customer.date = this.jstoday;
+    this.customer.date = this.jstoday;
     // console.log(this.customer);
-    this.httpClient.post("//localhost:8080/data/Customer/save/"+this.carloanId,
+    this.httpClient.post("//localhost:8080/data/Customer/save/" + this.carloanId,
       this.customer)
       .subscribe(
         data => {

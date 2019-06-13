@@ -42,7 +42,4 @@ export class HomeComponent implements OnInit {
   goCc(id: string, brand: any, generation: any): void {
     this.router.navigate(['/cc', id, brand, generation]);
   }
-  go(){
-    
-  }
 }

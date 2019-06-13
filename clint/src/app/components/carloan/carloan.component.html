@@ -50,6 +50,7 @@
         <h3 class="cdda">ข้อมูลส่วนตัว</h3>
         <!-- </ul> -->
         <mat-card class="card11">
+          <h4> วันที่กรอกข้อมูล : {{jstoday}}</h4>
           <div class="divvv">
             <mat-form-field class="input" appearance="outline">
               <mat-label>ชื่อ</mat-label>
@@ -117,9 +118,7 @@
             </mat-select>
           </mat-form-field>
         </mat-card>
-        <!-- <mat-card-actions> -->
-        <button class="button1" mat-flat-button color="warn" id="reg" color="primary">บันทึก</button>
-        <!-- </mat-card-actions> -->
+        <button class="button1" mat-flat-button color="warn" id="reg" color="primary" [disabled]="regisForm.invalid || checkSelected == false" >บันทึก</button>
       </form>
     </mat-card-content>
     <mat-card-actions>

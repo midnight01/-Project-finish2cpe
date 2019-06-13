@@ -34,8 +34,8 @@ public class SpecificationController {
         return specificationRepository.findAll().stream().collect(Collectors.toList());
     }
 
+
     @PostMapping(path = "/Specification/save")
-//    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> newSpecification(@Valid @RequestBody Specification newSpecification){
 
         Specification s = new Specification();

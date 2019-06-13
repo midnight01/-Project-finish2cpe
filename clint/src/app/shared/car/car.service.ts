@@ -24,5 +24,4 @@ export class CarService {
   getSpecificationID(specificationId: any): Observable<any> {
     return this.http.get(this.API + '/Specification/' + specificationId);
   }
-
 }

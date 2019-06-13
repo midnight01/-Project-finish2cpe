@@ -6,7 +6,7 @@
             <h1 class="text">Auto Car</h1>
             <button class="button2" routerLink="home" mat-button>หน้าหลัก</button>
             <div *ngIf="authority === 'admin'">
-                <button class="button2" routerLink="customer-list" mat-button>ข้อมูลลูกค้า</button>
+                <button class="button2" routerLink="download" mat-button>ข้อมูลลูกค้า</button>
             </div>
             <div *ngIf="authority === 'admin'">
                 <button class="button2" routerLink="new-car2" mat-button>เพิ่มรถ</button>
@@ -22,4 +22,4 @@
     </mat-sidenav-content>
 </mat-sidenav-container>
 
-<!-- <app-new-car2></app-new-car2> -->
+<!-- <app-download-data></app-download-data> -->

@@ -130,12 +130,12 @@
         </div>
         <div class="divvv">
           <button class="button2" mat-raised-button color="accent" matStepperPrevious>Back</button>
-          <button class="button2" mat-flat-button matStepperNext>Next</button>
+          <button class="button2" mat-flat-button [disabled]="regisForm.invalid || checkSelected == false" matStepperNext>Next</button>
         </div>
         <div class="files-list" *ngFor="let file of files;let i=index">
           <div>
             <p>{{ file }}</p>
-            <div>{{ uploadPercent | async }}</div>
+            <div>{{ uploadPercent0 | async }}</div>
             <!-- <a [href]="downloadURL | async">{{ downloadURL | async }}</a> -->
           </div>
           <button class="delete-file" (click)="deleteAttachment(i)">
@@ -151,7 +151,7 @@
       <ng-template matStepLabel>ข้อมูลทั้งหมด</ng-template>
 
 
-      <mat-card class="example-card2">
+      <mat-card class="example-card3">
         <h3>ข้อมูลทั้งหมด</h3>
         <mat-card-content>
 
@@ -188,7 +188,7 @@
 
             <div class="divvv">
               <button class="button2" mat-flat-button color="accent" matStepperPrevious>Back</button>
-              <button class="button2" type="submit" mat-flat-button color="warn" id="reg">Save</button>
+              <button class="button2" type="submit" mat-flat-button color="warn" id="reg" [disabled]="regisForm.invalid || checkSelected == false">Save</button>
             </div>
           </form>
         </mat-card-content>

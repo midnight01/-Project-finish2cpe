@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from 'src/app/shared/auth/token-storage.service';
 import { CarloanService } from 'src/app/shared/carloan/carloan.service';
-import { HttpClient } from '@angular/common/http';
+import { Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-customer-list',
@@ -11,25 +11,26 @@ import { HttpClient } from '@angular/common/http';
 export class CustomerListComponent implements OnInit {
   info: any;
   Customers: any;
-
-  constructor(private httpClient: HttpClient,private token: TokenStorageService, private service: CarloanService) {
+  date: any;
+  dateEnd: any;
+  constructor(private token: TokenStorageService, private service: CarloanService, private router: Router, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      this.date = params['data'];
+    });
+    this.route.params.subscribe(params => {
+      this.dateEnd = params['data1'];
+    });
   }
 
   ngOnInit() {
-    this.service.getCustomer().subscribe(data => {
+    this.service.getCustomer(this.date,this.dateEnd).subscribe(data => {
       this.Customers = data;
-      // console.log(this.Customers);
     });
- 
-
     this.info = {
       token: this.token.getToken(),
       username: this.token.getUsername(),
       authorities: this.token.getAuthorities()
     };
 
-  }
-  dow(){
-    this.httpClient.get("http://localhost:8080/data/download/customers.xlsx");
   }
 }

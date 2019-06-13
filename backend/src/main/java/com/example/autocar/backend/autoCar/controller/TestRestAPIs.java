@@ -21,9 +21,5 @@ public class TestRestAPIs {
         return ">>> Project Management Board";
     }
 
-    @GetMapping("/api/test/admin")
-    @PreAuthorize("hasRole('ADMIN')")
-    public String adminAccess() {
-        return ">>> Admin Contents";
-    }
+
 }

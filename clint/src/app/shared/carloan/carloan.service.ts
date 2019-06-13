@@ -22,7 +22,11 @@ export class CarloanService {
     return this.http.get(this.API + '/Carloan/' + carloanId);
   }
 
-  getCustomer(): Observable<any> {
-    return this.http.get(this.API + '/Customer');
+  getCustomer(date:any,dateEnd:any): Observable<any> {
+    return this.http.get(this.API + '/Customer/date/'+date+'/dateEnd/'+dateEnd);
+  }
+  
+  getdate(date:any,dateEnd:any){
+    this.http.get(this.API + "/download/date/"+date+"/dateEnd/"+dateEnd+"/customers.xlsx");
   }
 }

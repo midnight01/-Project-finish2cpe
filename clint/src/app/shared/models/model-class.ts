@@ -33,6 +33,8 @@ export class customer {
     workExperience?: any;
     salaryBase?: any;
     carloac?: Carloan;
+    date?:any;
+    dateEnd?:any;
 
 }
 export class User {

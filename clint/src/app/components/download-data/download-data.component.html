@@ -1,0 +1,33 @@
+<div *ngIf="info.token; else loggedOut">
+  <div class="div">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <h2> ช่วงเวลาที่ต้องดูข้อมูล </h2>
+        <!-- <a class="button" href="http://localhost:8080/data/download/customers.xlsx">download</a> -->
+      </mat-card-header>
+      <mat-card-content>
+        <form #regisForm="ngForm" (ngSubmit)="save()">
+          <mat-form-field class="input" appearance="outline">
+            <mat-label>ตั้งแต่วันที่</mat-label>
+            <input matInput type="date" placeholder="ตั้งแต่วันที่" name="date" [(ngModel)]="customer.date" required>
+          </mat-form-field>
+
+          <mat-form-field class="input" appearance="outline">
+            <mat-label>ถึงวันที่</mat-label>
+            <input matInput type="date" placeholder="ถึงวันที่" name="dateEnd" [(ngModel)]="customer.dateEnd" required>
+          </mat-form-field>
+          <button class="button2" mat-flat-button color="warn" 
+          [disabled]="regisForm.invalid || checkSelected == false"  color="primary">ดูข้อมูล</button>
+          
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+
+<ng-template #loggedOut>
+  <app-home></app-home>
+</ng-template>

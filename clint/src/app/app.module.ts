@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
+  MatNativeDateModule,
+  MatDialogModule,
   MatButtonModule,
   MatCardModule,
   MatInputModule,
@@ -33,9 +35,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { LoginComponent } from './components/login/login.component';
-import { NewCarComponent } from './components/new-car/new-car.component';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
 import { NewCar2Component } from './components/new-car2/new-car2.component';
+import { DownloadDataComponent } from './components/download-data/download-data.component';
+
 
 @NgModule({
   declarations: [
@@ -44,9 +47,9 @@ import { NewCar2Component } from './components/new-car2/new-car2.component';
     CcComponent,
     CarloanComponent,
     LoginComponent,
-    NewCarComponent,
     CustomerListComponent,
-    NewCar2Component
+    NewCar2Component,
+    DownloadDataComponent
   ],
 
   imports: [
@@ -62,7 +65,9 @@ import { NewCar2Component } from './components/new-car2/new-car2.component';
     AngularFireStorageModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatNativeDateModule,
     MatButtonModule,
+    MatDialogModule,
     MatCardModule,
     MatInputModule,
     MatSelectModule,

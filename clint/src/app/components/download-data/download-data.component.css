@@ -1,13 +1,17 @@
 .example-card {
-    max-width: 1024px;
+    max-width: 400px;
     margin: auto;
     margin-top: 30px;
 }
 
 table {
     width: 100%;
-    /* border: 1px solid black; */
 }
+.input {
+    width: 100%;
+    margin-bottom: 10px;
+    /* border: 1px solid black; */
+  }
 
 table, td, th {
     border: 1px solid rgb(12, 105, 245);
@@ -15,7 +19,6 @@ table, td, th {
 .tr{
     margin: auto;
     text-align: center;
-    /* border: 1px solid black; */
 }
 .button{
     font-size: 14px;
@@ -25,4 +28,11 @@ table, td, th {
 }
 .button1{
     margin-right: 10px;
+}
+.button2 {
+    width: 100%;
+    margin: auto;
+    margin-top: 10px;
+    margin-left: 5px;
+    /* margin-right: 5px; */
 }
